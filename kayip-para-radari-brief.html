@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Kayıp Para Radarı by DevLastStudio — an AI financial agent that finds forgotten subscriptions, missed refunds and hidden recurring charges.">
+    <title>Kayıp Para Radarı Brief | DevLastStudio</title>
+    <meta property="og:title" content="Kayıp Para Radarı — product brief">
+    <meta property="og:description" content="Finds forgotten subscriptions, missed return windows and hidden recurring charges. Built on Claude.">
+    <meta property="og:url" content="https://devlaststudio.com/kayip-para-radari-brief.html">
+    <link rel="canonical" href="https://devlaststudio.com/kayip-para-radari-brief.html">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' rx='20' width='100' height='100'/><circle cx='50' cy='50' r='34' fill='none' stroke='%2322c55e' stroke-width='6' opacity='.5'/><circle cx='50' cy='50' r='16' fill='none' stroke='%2322c55e' stroke-width='6'/><path d='M50 50 L78 26' stroke='%2322c55e' stroke-width='8' stroke-linecap='round'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .kpr { padding-top: 120px; }
+        .kpr-hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-3xl); align-items: center; padding-bottom: var(--space-4xl); }
+        .kpr-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: var(--radius-full); font-size: var(--font-size-xs); font-weight: 600; color: #22c55e; background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25); margin-bottom: var(--space-lg); }
+        .kpr-eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e; }
+        .kpr-title { font-size: clamp(2.2rem, 5vw, var(--font-size-5xl)); font-weight: 800; line-height: 1.1; margin-bottom: var(--space-md); }
+        .kpr-title span { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .kpr-tagline { font-size: var(--font-size-xl); font-weight: 600; color: var(--color-text-primary); margin-bottom: var(--space-md); }
+        .kpr-lead { font-size: var(--font-size-lg); color: var(--color-text-secondary); line-height: 1.7; margin-bottom: var(--space-2xl); max-width: 36rem; }
+        .kpr-cta { display: inline-flex; align-items: center; gap: var(--space-sm); padding: var(--space-md) var(--space-xl); background: var(--gradient-primary); border-radius: var(--radius-lg); font-weight: 600; color: #fff; box-shadow: var(--shadow-glow); transition: transform var(--transition-base); }
+        .kpr-cta:hover { transform: translateY(-2px); }
+        .kpr-note { margin-top: var(--space-md); font-size: var(--font-size-sm); color: var(--color-text-muted); }
+
+        .kpr-mock { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-2xl); padding: var(--space-xl); box-shadow: var(--shadow-xl); }
+        .kpr-mock-head { font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-sm); }
+        .kpr-mock-total { font-size: var(--font-size-2xl); font-weight: 800; margin-bottom: var(--space-lg); }
+        .kpr-mock-total small { display: block; font-size: var(--font-size-sm); font-weight: 500; color: var(--color-text-secondary); }
+        .kpr-find { display: flex; gap: var(--space-md); align-items: flex-start; padding: var(--space-md); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg-glass); margin-bottom: var(--space-sm); }
+        .kpr-find b { display: block; font-size: var(--font-size-sm); }
+        .kpr-find span { font-size: var(--font-size-xs); color: var(--color-text-muted); }
+        .kpr-find em { margin-left: auto; font-style: normal; font-weight: 700; font-size: var(--font-size-sm); white-space: nowrap; color: #22c55e; }
+        .kpr-dot { flex-shrink: 0; width: 10px; height: 10px; margin-top: 5px; border-radius: 50%; }
+        .kpr-mock-foot { font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: var(--space-md); }
+
+        .kpr-section { padding: var(--space-3xl) 0; border-top: 1px solid var(--color-border); }
+        .kpr-section h2 { font-size: var(--font-size-3xl); font-weight: 800; margin-bottom: var(--space-md); }
+        .kpr-section > .container > p { color: var(--color-text-secondary); font-size: var(--font-size-lg); max-width: 44rem; line-height: 1.7; margin-bottom: var(--space-2xl); }
+        .kpr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-lg); }
+        .kpr-card { padding: var(--space-xl); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-xl); }
+        .kpr-card .num { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; background: var(--gradient-primary); font-weight: 700; font-size: var(--font-size-sm); margin-bottom: var(--space-md); }
+        .kpr-card h3 { font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--space-sm); }
+        .kpr-card p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.7; }
+        .kpr-disclaimer { font-size: var(--font-size-sm) !important; color: var(--color-text-muted) !important; max-width: 52rem; line-height: 1.7; margin: 0 !important; }
+        .kpr-tag { display: inline-block; margin-bottom: var(--space-sm); font-size: var(--font-size-xs); font-weight: 700; color: var(--color-accent-primary); letter-spacing: .04em; text-transform: uppercase; }
+
+        @media (max-width: 900px) { .kpr-hero { grid-template-columns: 1fr; } }
+
+        .brief-hero { padding-bottom: var(--space-3xl); }
+        .brief-back { display: inline-block; margin-bottom: var(--space-lg); color: var(--color-text-muted); font-size: var(--font-size-sm); }
+        .brief-back:hover { color: var(--color-accent-primary); }
+        .brief-toc { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+        .brief-toc a { padding: 6px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: var(--font-size-xs); color: var(--color-text-secondary); background: var(--color-bg-glass); }
+        .brief-toc a:hover { border-color: var(--color-accent-primary); color: var(--color-text-primary); }
+        .brief-table-wrap { overflow-x: auto; margin: var(--space-lg) 0; border: 1px solid var(--color-border); border-radius: var(--radius-xl); }
+        .brief-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); min-width: 520px; }
+        .brief-table th { text-align: left; padding: 12px 16px; background: var(--color-bg-glass); color: var(--color-text-primary); font-weight: 600; }
+        .brief-table td { padding: 12px 16px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); vertical-align: top; }
+        .brief-table tr.hl td { color: #22c55e; font-weight: 600; background: rgba(34,197,94,.06); }
+        .brief-table b { font-size: var(--font-size-xs); padding: 2px 8px; border-radius: var(--radius-full); }
+        .p0 { color: #22c55e; background: rgba(34,197,94,.12); } .p1 { color: #f59e0b; background: rgba(245,158,11,.12); } .p2 { color: #8b5cf6; background: rgba(139,92,246,.14); }
+        .brief-h3 { font-size: var(--font-size-xl); font-weight: 700; margin: var(--space-2xl) 0 var(--space-md); }
+        .brief-steps, .brief-list { color: var(--color-text-secondary); line-height: 1.8; padding-left: 1.4rem; max-width: 46rem; }
+        .brief-steps { list-style: decimal; } .brief-list { list-style: disc; }
+        .brief-bars { display: grid; gap: 10px; max-width: 40rem; }
+        .brief-bars div { display: grid; grid-template-columns: 11rem 1fr 3rem; align-items: center; gap: 12px; font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+        .brief-bars i { height: 10px; border-radius: 99px; background: var(--color-bg-glass); position: relative; overflow: hidden; }
+        .brief-bars i::after { content: ""; position: absolute; inset: 0; width: calc(var(--w) * 3.33); max-width: 100%; background: var(--gradient-primary); border-radius: 99px; }
+        .brief-bars b { text-align: right; color: var(--color-text-primary); }
+        .brief-stack { margin-top: var(--space-xl) !important; font-size: var(--font-size-sm) !important; }
+        .brief-note { font-size: var(--font-size-base) !important; margin-top: var(--space-xl) !important; }
+        .brief-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); }
+        .brief-timeline div { padding: var(--space-lg); border: 1px solid var(--color-border); border-radius: var(--radius-xl); background: var(--color-bg-card); }
+        .brief-timeline b { display: block; font-size: var(--font-size-xs); color: var(--color-accent-primary); text-transform: uppercase; letter-spacing: .04em; }
+        .brief-timeline span { display: block; font-weight: 700; margin: 4px 0 6px; }
+        .brief-timeline p { font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6; }
+        .brief-link { color: var(--color-accent-primary); text-decoration: underline; }
+        .brief-disc { margin-top: var(--space-xl) !important; }
+        .kpr-section h2 { scroll-margin-top: 100px; }
+        @media (max-width: 600px) { .brief-bars div { grid-template-columns: 8rem 1fr 2.5rem; } }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">D</div>
+                <span class="logo-text">DevLastStudio</span>
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link" data-i18n="navHome">Home</a></li>
+                <li><a href="index.html#features" class="nav-link" data-i18n="navFeatures">Features</a></li>
+                <li><a href="index.html#apps" class="nav-link" data-i18n="navApps">Apps</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-i18n="navContact">Contact</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <!-- Language Selector -->
+                <div class="lang-selector" id="lang-selector">
+                    <button class="lang-btn" id="lang-btn" aria-label="Select language" aria-expanded="false"
+                        aria-haspopup="listbox">
+                        <span id="current-flag">🇬🇧</span>
+                        <span id="current-lang">EN</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown" role="listbox" aria-label="Select language">
+                        <button class="lang-option" data-lang="en" role="option">
+                            <span>🇬🇧</span> English
+                        </button>
+                        <button class="lang-option" data-lang="de" role="option">
+                            <span>🇩🇪</span> Deutsch
+                        </button>
+                        <button class="lang-option" data-lang="es" role="option">
+                            <span>🇪🇸</span> Español
+                        </button>
+                        <button class="lang-option" data-lang="fr" role="option">
+                            <span>🇫🇷</span> Français
+                        </button>
+                        <button class="lang-option" data-lang="it" role="option">
+                            <span>🇮🇹</span> Italiano
+                        </button>
+                        <button class="lang-option" data-lang="tr" role="option">
+                            <span>🇹🇷</span> Türkçe
+                        </button>
+                    </div>
+                </div>
+
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="kpr brief">
+        <section class="container brief-hero">
+            <a class="brief-back" href="kayip-para-radari.html">← Kayıp Para Radarı</a>
+            <div class="kpr-eyebrow"><i></i><span>Product brief · October 2026</span></div>
+            <h1 class="kpr-title">Kayıp Para Radarı <span>product brief</span></h1>
+            <p class="kpr-lead">An AI financial agent by DevLastStudio. This page summarises the problem we are solving, the product, how we use Claude, our business model and our 90-day plan.</p>
+            <nav class="brief-toc" aria-label="Contents">
+                <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#users">Users</a><a href="#product">Product</a><a href="#ai">AI &amp; Claude</a><a href="#trust">Trust</a><a href="#model">Business model</a><a href="#roadmap">Roadmap</a><a href="#metrics">Metrics</a><a href="#team">Team</a>
+            </nav>
+        </section>
+
+        <section class="kpr-section" id="problem">
+            <div class="container">
+                <h2>The problem</h2>
+                <p>People roughly know where their money goes. What they don't see is which part of it is being lost: a subscription still charged months after they stopped using it, a missed return window, a product that got cheaper a week after purchase, or small recurring charges that add up over a month.</p>
+                <div class="brief-table-wrap">
+                    <table class="brief-table">
+                        <thead><tr><th>Today's tools</th><th>What they show</th><th>What's missing</th></tr></thead>
+                        <tbody>
+                            <tr><td>Expense trackers</td><td>Categories and totals</td><td>Why, and what to do about it</td></tr>
+                            <tr><td>Budgeting apps</td><td>Limits and goals</td><td>Why a limit was exceeded</td></tr>
+                            <tr><td>Banking apps</td><td>Transaction history</td><td>Discovering leaks and opportunities</td></tr>
+                            <tr><td>Coupon / deal apps</td><td>Campaigns</td><td>The user's real spending context</td></tr>
+                            <tr class="hl"><td>Kayıp Para Radarı</td><td>Finding + explanation + suggested action</td><td>Our core differentiator</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="solution">
+            <div class="container">
+                <h2>The solution</h2>
+                <p>Kayıp Para Radarı analyses the emails, receipts and documents a user chooses to share and finds the money leaks they haven't noticed. It ranks them, explains why each one matters and suggests a next step. Our promise: <strong>"Don't show me my spending. Find the money I'm missing."</strong></p>
+                <div class="kpr-grid">
+                    <div class="kpr-card"><h3>Benefit first</h3><p>Every screen explains what the user gains from it.</p></div>
+                    <div class="kpr-card"><h3>Explainable AI</h3><p>Every recommendation shows the data and the reasoning behind it.</p></div>
+                    <div class="kpr-card"><h3>Consent and trust</h3><p>Only the minimum data needed is processed, and only with permission.</p></div>
+                    <div class="kpr-card"><h3>Action-oriented</h3><p>Each important finding links to a concrete next step.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="users">
+            <div class="container">
+                <h2>Who it's for</h2>
+                <p>Our first users shop online regularly, pay for several subscriptions and want more control over their spending.</p>
+                <div class="kpr-grid">
+                    <div class="kpr-card"><span class="kpr-tag">Busy professional</span><p>Finds forgotten payments through an automatic monthly scan, saving time and money.</p></div>
+                    <div class="kpr-card"><span class="kpr-tag">Online shopper</span><p>Catches price drops and return deadlines on recent orders.</p></div>
+                    <div class="kpr-card"><span class="kpr-tag">Subscription user</span><p>Cuts fixed monthly costs by spotting memberships that are no longer used.</p></div>
+                    <div class="kpr-card"><span class="kpr-tag">Budget-minded</span><p>Gets a monthly AI summary that helps change spending habits.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="product">
+            <div class="container">
+                <h2>Product</h2>
+                <p>The home screen is not a dashboard of charts. It is a daily feed: <em>"Here's what I found for you today."</em></p>
+                <div class="brief-table-wrap">
+                    <table class="brief-table">
+                        <thead><tr><th>Feature</th><th>What it does</th><th>Priority</th></tr></thead>
+                        <tbody>
+                            <tr><td>Money-leak detection</td><td>Forgotten, recurring or no-longer-needed charges</td><td><b class="p0">MVP</b></td></tr>
+                            <tr><td>Subscription detective</td><td>Recurring payments, their yearly cost and whether they are still used</td><td><b class="p0">MVP</b></td></tr>
+                            <tr><td>Financial X-ray</td><td>5–8 meaningful AI insights instead of dozens of charts</td><td><b class="p0">MVP</b></td></tr>
+                            <tr><td>Price-drop tracking</td><td>Watches later price changes for items already bought</td><td><b class="p1">Next</b></td></tr>
+                            <tr><td>Return-window alerts</td><td>Reminders before return or warranty deadlines</td><td><b class="p1">Next</b></td></tr>
+                            <tr><td>Monthly AI coach</td><td>End-of-month behaviour analysis and goal suggestions</td><td><b class="p1">Next</b></td></tr>
+                            <tr><td>Next month forecast</td><td>Projection of the coming period based on current habits</td><td><b class="p1">Next</b></td></tr>
+                            <tr><td>Action centre</td><td>Cancellation, reminder and refund steps, always user-approved</td><td><b class="p2">Later</b></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3 class="brief-h3">First-run experience</h3>
+                <ol class="brief-steps">
+                    <li>The user installs the app and sees a free 90-day financial scan.</li>
+                    <li>They pick a source: email, receipt upload or manual import.</li>
+                    <li>Transactions are extracted and categorised.</li>
+                    <li>Leaks and savings opportunities are scored.</li>
+                    <li>A results screen shows the findings, for example "7 findings, estimated impact".</li>
+                    <li>Each finding opens to show the evidence, the reasoning and a suggested action.</li>
+                    <li>The app offers recurring scans and timely alerts.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="ai">
+            <div class="container">
+                <h2>How we use Claude</h2>
+                <p>Claude sits at the centre of the product, but it is never used as a calculator. Amounts, thresholds and scores come from deterministic services; Claude handles the parts that need language understanding.</p>
+                <div class="brief-table-wrap">
+                    <table class="brief-table">
+                        <thead><tr><th>Task</th><th>Claude's role</th><th>Rule engine's role</th></tr></thead>
+                        <tbody>
+                            <tr><td>Reading documents</td><td>Extract fields from receipts, invoices and order emails</td><td>Validate formats</td></tr>
+                            <tr><td>Categorisation</td><td>Classify merchants and transactions</td><td>Enforce the category hierarchy</td></tr>
+                            <tr><td>Subscriptions</td><td>Explain the detected pattern</td><td>Compute cadence and repetition</td></tr>
+                            <tr><td>Money leaks</td><td>Explain why it matters and what to do</td><td>Compute impact, thresholds and score</td></tr>
+                            <tr><td>Monthly coach</td><td>Write a natural-language summary</td><td>Produce period statistics</td></tr>
+                            <tr><td>Chat with your data</td><td>Understand and answer the question</td><td>Control data access and limits</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3 class="brief-h3">Finding score</h3>
+                <p>Not every signal is worth showing. Each finding is ranked so users only see what matters.</p>
+                <div class="brief-bars">
+                    <div><span>Financial impact</span><i style="--w:30%"></i><b>30%</b></div>
+                    <div><span>Confidence</span><i style="--w:25%"></i><b>25%</b></div>
+                    <div><span>Likelihood to recur</span><i style="--w:15%"></i><b>15%</b></div>
+                    <div><span>Time sensitivity</span><i style="--w:15%"></i><b>15%</b></div>
+                    <div><span>Fit with user goals</span><i style="--w:15%"></i><b>15%</b></div>
+                </div>
+                <h3 class="brief-h3">Guardrails</h3>
+                <ul class="brief-list">
+                    <li>The model never makes up amounts; every number comes from the data layer.</li>
+                    <li>Uncertain findings carry a confidence label ("likely", "estimated").</li>
+                    <li>Clear limits are shown wherever a decision could have financial or legal consequences.</li>
+                    <li>No action is taken without explicit user approval.</li>
+                    <li>Model outputs are logged for audit.</li>
+                </ul>
+                <p class="brief-stack"><b>Stack:</b> Flutter (iOS + Android) · .NET Web API · PostgreSQL · S3-compatible storage · Redis job queue · Claude API · FCM / APNs</p>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="trust">
+            <div class="container">
+                <h2>Security and privacy</h2>
+                <p>Our most important asset is not the data itself but our users' trust. Security is a design principle from day one.</p>
+                <div class="kpr-grid">
+                    <div class="kpr-card"><h3>Encryption</h3><p>Encrypted in transit and at rest; secrets kept out of source code.</p></div>
+                    <div class="kpr-card"><h3>Least privilege</h3><p>Role-based access and minimum permissions for service accounts.</p></div>
+                    <div class="kpr-card"><h3>Data minimisation</h3><p>Only the context needed is sent to the AI layer.</p></div>
+                    <div class="kpr-card"><h3>User control</h3><p>Clear consent screens, defined retention and one-tap deletion.</p></div>
+                </div>
+                <div class="brief-table-wrap">
+                    <table class="brief-table">
+                        <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+                        <tbody>
+                            <tr><td>Wrong finding</td><td>Confidence score, source shown, user feedback</td></tr>
+                            <tr><td>Wrong AI suggestion</td><td>Deterministic calculations, AI limits, user approval</td></tr>
+                            <tr><td>Data breach</td><td>Encryption, access control, logging, minimisation</td></tr>
+                            <tr><td>Notification fatigue</td><td>Notification budget and importance ranking</td></tr>
+                            <tr><td>Integration breaks</td><td>Adapter architecture, health checks, fallbacks</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="model">
+            <div class="container">
+                <h2>Business model</h2>
+                <p>Because the value is visible as money saved, a subscription model fits. We show real value before asking users to pay, and we avoid an ad-driven model.</p>
+                <div class="kpr-grid">
+                    <div class="kpr-card"><span class="kpr-tag">Free</span><h3>Discover</h3><p>Limited scans, core findings and a monthly summary.</p></div>
+                    <div class="kpr-card"><span class="kpr-tag">Premium</span><h3>Monitor</h3><p>More sources, continuous scanning, advanced AI, goals and priority alerts.</p></div>
+                    <div class="kpr-card"><span class="kpr-tag">Family</span><h3>Share</h3><p>Multiple profiles, shared goals and a household budget view.</p></div>
+                </div>
+                <p class="brief-note">Later revenue options: a capped share of verifiable savings, clearly labelled partner offers that benefit the user, and a B2B2C employee financial-wellbeing benefit.</p>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="roadmap">
+            <div class="container">
+                <h2>90-day roadmap</h2>
+                <div class="brief-timeline">
+                    <div><b>Weeks 1–2</b><span>Problem validation</span><p>Landing page, user interviews, first data-flow prototype</p></div>
+                    <div><b>Weeks 3–4</b><span>Core parser</span><p>Receipt, PDF and email extraction; transaction model</p></div>
+                    <div><b>Weeks 5–6</b><span>Insight engine</span><p>Subscription, recurring-payment and leak rules</p></div>
+                    <div><b>Weeks 7–8</b><span>AI layer</span><p>Explanations, summaries, suggestions and a natural-language query prototype</p></div>
+                    <div><b>Weeks 9–10</b><span>Mobile beta</span><p>Flutter app, onboarding, home feed and finding details</p></div>
+                    <div><b>Week 11</b><span>Security and quality</span><p>Permissions, data deletion, audit, error tracking, load tests</p></div>
+                    <div><b>Week 12</b><span>Closed beta</span><p>Real-user testing of accuracy, retention and willingness to pay</p></div>
+                </div>
+                <p class="brief-note">Phase 2: bank and financial-data integrations, more e-commerce and billing sources, the price-drop engine, the family plan and a controlled-action agent.</p>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="metrics">
+            <div class="container">
+                <h2>How we measure success</h2>
+                <div class="brief-table-wrap">
+                    <table class="brief-table">
+                        <thead><tr><th>KPI</th><th>What it tells us</th></tr></thead>
+                        <tbody>
+                            <tr><td>Activation</td><td>Share of users who reach their first meaningful finding</td></tr>
+                            <tr><td>Insight useful rate</td><td>Findings marked "this helped me": AI accuracy and value</td></tr>
+                            <tr><td>Action rate</td><td>Whether findings turn into actions</td></tr>
+                            <tr><td>D7 / D30 retention</td><td>Repeat usage</td></tr>
+                            <tr><td>Premium conversion</td><td>Monetisation</td></tr>
+                            <tr><td>Saved / prevented amount</td><td>The KPI behind our core promise</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="kpr-section" id="team">
+            <div class="container">
+                <h2>Team</h2>
+                <p>DevLastStudio is a three-person mobile studio based in Ankara, Türkiye (two co-founders and one employee), founded in February 2025. We have already published games on Google Play, including <a class="brief-link" href="https://play.google.com/store/apps/details?id=com.devlaststudio.blockpuzzle" target="_blank" rel="noopener">Block Puzzle Blasting</a> and <a class="brief-link" href="https://play.google.com/store/apps/details?id=com.devlaststudio.drawyourway" target="_blank" rel="noopener">Draw Your Way</a>.</p>
+                <a class="kpr-cta" href="mailto:contact@devlaststudio.com?subject=Kay%C4%B1p%20Para%20Radar%C4%B1">Contact us</a>
+                <p class="kpr-disclaimer brief-disc">Kayıp Para Radarı is an information and organisation tool. It is not a bank or a licensed financial advisor and does not provide investment, tax or legal advice.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="privacy.html" class="footer-link" data-i18n="footerPrivacy">Privacy Policy</a>
+                    <a href="index.html#apps" class="footer-link" data-i18n="footerApps">Apps</a>
+                    <a href="index.html#contact" class="footer-link" data-i18n="footerContact">Contact</a>
+                </div>
+
+                <p class="footer-copyright" data-i18n="footerCopyright">
+                    © 2026 DevLastStudio. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
